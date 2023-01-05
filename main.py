@@ -14,6 +14,8 @@ dict_result = soup.text
 
 a = json.loads(dict_result)
 
+rank = 1
+
 book_list = []
 
 book_list.append(a)
@@ -31,6 +33,13 @@ with open('joara.json', 'rt', encoding='UTF8') as f:
 # Extract the list from the dictionary
 my_list = data[0]["books"]
 
+# my_list[0]["rank"] = rank
+
+for list_item in my_list:
+    # print(list_item["book_code"])
+    list_item['rank'] = rank
+    list_item['link'] = "https://www.joara.com/book/"+list_item["book_code"]
+    rank = rank+1
 
 with open('joara.json', 'w', encoding='utf-8') as file:
     json.dump(my_list, file, ensure_ascii=False, indent="\t")
