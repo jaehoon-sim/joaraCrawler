@@ -13,7 +13,6 @@ soup = BeautifulSoup(html, 'html.parser')
 dict_result = soup.text
 
 a = json.loads(dict_result)
-print(a)
 
 book_list = []
 
@@ -30,8 +29,7 @@ with open('joara.json', 'rt', encoding='UTF8') as f:
     data = json.load(f)
 
 # Extract the list from the dictionary
-my_list = data[0]
-my_list = my_list["books"]
+my_list = data[0]["books"]
 
 
 with open('joara.json', 'w', encoding='utf-8') as file:
